@@ -6,7 +6,7 @@ const tempDir = require('temp-dir')
 const chrome = require('chromium-prebuilt')
 const escape = require('shell-escape')
 
-module.exports = async ({ url, width: width = 1024, height: height = 768 }) => {
+module.exports = async ({ url, width: width = 1024, height: height = 768, deviceScaleFactor: deviceScaleFactor = 1 }) => {
   const cwd = `${tempDir}/${Date.now()}${Math.random().toString(16).slice(2)}`
   await mkdir(cwd)
   await exec(
@@ -18,6 +18,7 @@ module.exports = async ({ url, width: width = 1024, height: height = 768 }) => {
       `--window-size=${width}x${height}`,
       '--hide-scrollbars',
       '--no-sandbox',
+      `--force-device-scale-factor=${deviceScaleFactor}`,
       url
     ]),
     { cwd }

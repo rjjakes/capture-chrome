@@ -17,7 +17,10 @@ const capture = require('capture-chrome')
 const fs = require('fs')
 
 capture({
-  url: 'https://github.com/'
+  url: 'https://github.com/',
+  width: 1024,
+  height: 768,
+  deviceScaleFactor: 1      // Set to "2" to emulate Apple retina display resolution.
 }).then(screenshot => {
   fs.writeFileSync(`${__dirname}/example.png`, screenshot)
   console.log('open example.png')
@@ -37,6 +40,7 @@ Options:
 - `url` Page url
 - `width` Viewport width
 - `height` Viewport height
+- `deviceScaleFactor` 1 for normal resolution, 2 to emulate retina devices.
 
 ## Installation
 
