@@ -17,6 +17,7 @@ module.exports = async ({ url, width: width = 1024, height: height = 768 }) => {
       '--screenshot',
       `--window-size=${width}x${height}`,
       '--hide-scrollbars',
+      '--no-sandbox',
       url
     ]),
     { cwd }
